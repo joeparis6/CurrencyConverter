@@ -76,11 +76,11 @@ public class CurrencyConverter {
     }
 
     public double convertToDollars(double amount, double exchangeRate) {
-        return amount * exchangeRate;
+        return amount / exchangeRate;
     }
 
     public double convertDollarsToCurrency(double dollarAmount, double exchangeRate) {
-        return dollarAmount / exchangeRate;
+        return dollarAmount * exchangeRate;
     }
 
     // Input validation methods
@@ -315,7 +315,7 @@ public class CurrencyConverter {
         assertTrue(addCurrency(cur1.currencyCode, cur1.exchangeRate));
         assertTrue(addCurrency(cur2.currencyCode, cur2.exchangeRate));
         double amount = 10.00;
-        double newAmount1 = amount * cur1.exchangeRate / cur2.exchangeRate;
+        double newAmount1 = (amount / cur1.exchangeRate) * cur2.exchangeRate;
         double newAmount2 = convertCurrency(cur1.currencyCode, cur2.currencyCode, amount);
         assert(newAmount1 == newAmount2);
     }
